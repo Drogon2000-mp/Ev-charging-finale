@@ -1,0 +1,163 @@
+/* Update these styles in your CSS */
+
+/* Main grid layout */
+.main-grid {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 20px;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  padding: 20px;
+}
+
+/* Left panel improvements */
+.left-panel {
+  background: #fafafa;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #eee;
+  height: fit-content;
+}
+
+.left-panel h2 {
+  font-size: 18px;
+  margin-bottom: 20px;
+  color: #2c3e50;
+}
+
+.left-panel form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.left-panel label {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  font-weight: 600;
+  gap: 6px;
+  color: #333;
+}
+
+/* Map panel improvements */
+.map-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.map-panel .leaflet-container {
+  width: 100%;
+  height: 500px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* Station details improvements */
+.station-details {
+  background: #f6fffa;
+  padding: 16px;
+  border-radius: 8px;
+  border-left: 4px solid #28a745;
+  margin-top: 10px;
+}
+
+.station-details h3 {
+  margin-top: 0;
+  color: #28a745;
+  font-size: 18px;
+}
+
+.station-details p {
+  margin: 8px 0;
+  font-size: 14px;
+}
+
+/* Reserve button */
+.reserve-btn {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 12px 16px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 12px;
+  width: 100%;
+  transition: background 0.2s ease;
+}
+
+.reserve-btn:hover {
+  background: #0056b3;
+}
+
+/* Reservations list improvements */
+.reservations-list {
+  background: #fff;
+  padding: 16px;
+  border-radius: 8px;
+  border: 1px solid #eee;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.reservations-list h3 {
+  margin-top: 0;
+  color: #2c3e50;
+  font-size: 16px;
+  margin-bottom: 12px;
+}
+
+.reservations-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.reservations-list li {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+  font-size: 14px;
+}
+
+.reservations-list li:last-child {
+  border-bottom: none;
+}
+
+/* Form elements consistency */
+input, select {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  outline: none;
+  transition: border 0.2s ease;
+}
+
+input:focus, select:focus {
+  border-color: #007bff;
+}
+
+.primary-btn {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background 0.2s ease;
+}
+
+.primary-btn:hover {
+  background: #0056b3;
+}
+
+.hint {
+  font-size: 12px;
+  color: #666;
+  font-style: italic;
+  margin: 5px 0;
+}
