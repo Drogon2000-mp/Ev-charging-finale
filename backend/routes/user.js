@@ -7,8 +7,12 @@ import auth from "../middleware/auth.js";
 const router = express.Router();
 
 // Helper: JWT signer
-const signToken = (payload) =>
-  jwt.sign(payload, process.env.JWT_SECRET || "devsecret", { expiresIn: "7d" });
+const signToken = (payload) => {
+  const secret = process.env.JWT_SECRET;
+  if (!secret) throw new Error("JWT_SECRET not configured");
+  return jwt.sign(payload, secret, { expiresIn: "7d" });
+};
+
 
 /* 🟩 SIGNUP */
 router.post("/signup", async (req, res) => {
@@ -157,19 +161,8 @@ router.post("/change-password", async (req, res) => {
     res.status(500).json({ message: "Failed to change password" });
   }
 });
-/* ======================================================
-   🔹 GET CURRENT USER INFO
-   ====================================================== */
-router.get("/users/me", auth, async (req, res) => {
-  try {
-    const user = await User.findById(req.user.id).select("email name role");
-    if (!user) return res.status(404).json({ message: "User not found" });
-    res.json(user);
-  } catch (err) {
-    console.error("Error fetching user info:", err);
-    res.status(500).json({ message: "Failed to fetch user info" });
-  }
-});
+// (duplicate removed) GET /users/me implemented above
+
 
 /* ======================================================
    🔹 CHANGE PASSWORD

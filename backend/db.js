@@ -3,7 +3,12 @@ import mongoose from 'mongoose';
 const connectDB = async () => {
   console.log("🔌 Connecting to MongoDB...");
   try {
-    await mongoose.connect('mongodb+srv://Viserion2000:Dr%40gon1998@evstation.jkaymhh.mongodb.net/evstation?retryWrites=true&w=majority&appName=EvStation');
+    if (!process.env.MONGODB_URI) {
+      console.error("❌ MONGODB_URI is not set");
+      process.exit(1);
+    }
+    await mongoose.connect(process.env.MONGODB_URI);
+
     console.log("✅ MongoDB Connected");
   } catch (err) {
     console.error("❌ MongoDB connection error:", err.message);

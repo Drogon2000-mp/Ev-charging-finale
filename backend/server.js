@@ -8,11 +8,16 @@ import reservationsRoutes from "./routes/reservations.js"
 
 dotenv.config();
 
-// Ensure JWT secret
+// Ensure JWT secret (no silent fallback in production)
 if (!process.env.JWT_SECRET) {
-  console.warn("⚠️  JWT_SECRET not found in .env. Using fallback: devsecret");
+  if (process.env.NODE_ENV === "production") {
+    console.error("❌ JWT_SECRET is not set");
+    process.exit(1);
+  }
+  console.warn("⚠️  JWT_SECRET not found in .env. Using fallback: devsecret (development only)");
   process.env.JWT_SECRET = "devsecret";
 }
+
 
 // Connect DB
 connectDB();

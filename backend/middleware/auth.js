@@ -24,7 +24,12 @@ export default function auth(req, res, next) {
     }
 
     // verify
-    const secret = process.env.JWT_SECRET || "devsecret";
+    const secret = process.env.JWT_SECRET;
+    if (!secret) {
+      console.error("❌ JWT_SECRET is not set");
+      return res.status(500).json({ error: "JWT secret not configured" });
+    }
+
     let decoded;
     try {
       decoded = jwt.verify(token, secret);
